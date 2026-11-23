@@ -68,6 +68,33 @@ recursivamente en sus hijos.
   acepta (`Columna` → `Casillero`, `Taquilla` → `Columna`, `RedLockers` →
   `Taquilla` o `RedLockers`). También se impiden ciclos.
 
+### Diagrama de secuencia: asignar un paquete
+
+El cliente pide un casillero GRANDE a la red y la petición baja por el árbol
+hasta encontrar una hoja libre.
+
+```mermaid
+sequenceDiagram
+    participant C as CentroReparto
+    participant R as RedLockers León
+    participant T as Taquilla Campus
+    participant A as Columna A
+    participant A1 as Casillero A1 (PEQUENO)
+    participant A3 as Casillero A3 (GRANDE)
+
+    C->>R: buscarCasilleroLibre(GRANDE)
+    R->>T: buscarCasilleroLibre(GRANDE)
+    T->>A: buscarCasilleroLibre(GRANDE)
+    A->>A1: buscarCasilleroLibre(GRANDE)
+    A1-->>A: null
+    A->>A3: buscarCasilleroLibre(GRANDE)
+    A3-->>A: A3
+    A-->>T: A3
+    T-->>R: A3
+    R-->>C: A3
+    C->>A3: depositar("PKG-001")
+```
+
 ---
 
 ## Iterator
@@ -109,6 +136,37 @@ misma interfaz (`firstElement`, `nextElement`, `hasMoreElements`,
   todos los casilleros de un subárbol con una pila de iteradores (uno por
   nivel). Lo usa `CentroReparto.localizarPaquete()`.
 
+### Diagrama de secuencia: localizar un paquete
+
+El cliente teclea su código y se recorren todos los casilleros de la red con el
+`CasilleroIterator`, sin conocer la forma del árbol.
+
+```mermaid
+sequenceDiagram
+    participant C as CentroReparto
+    participant R as RedLockers
+    participant CI as CasilleroIterator
+    participant IR as ListIterator (hijos de la red)
+    participant T as Taquilla T1
+    participant IT as ListIterator (hijos de T1)
+
+    C->>R: createCasilleroIterator()
+    R->>CI: new CasilleroIterator(this)
+    CI->>R: createIterator()
+    R-->>CI: IR
+    CI->>IR: currentElement()
+    IR-->>CI: T1 (compuesto)
+    CI->>T: createIterator()
+    T-->>CI: IT (se apila)
+    Note over CI: baja hasta la primera columna<br/>y se queda en su primer casillero
+    loop mientras hasMoreElements()
+        C->>CI: currentElement()
+        CI-->>C: casillero
+        C->>C: ¿getPaquete() == código?
+        C->>CI: nextElement()
+    end
+```
+
 ---
 
 ## Builder
@@ -148,6 +206,34 @@ representación se genera. El mismo proceso crea dos productos distintos.
 - **Ensamblaje:** cada parte se añade a la última parte contenedora construida
   (el casillero a la última columna...). `ArbolLockerBuilder` lanza
   `IllegalStateException` si el orden no es válido.
+
+### Diagrama de secuencia: construir una taquilla estándar
+
+```mermaid
+sequenceDiagram
+    participant Cl as Cliente
+    participant B as ArbolLockerBuilder
+    participant D as DirectorLocker
+
+    Cl->>B: new ArbolLockerBuilder()
+    Cl->>D: new DirectorLocker(builder)
+    Cl->>D: construirTaquillaEstandar("T1", "Campus")
+    D->>B: buildTaquilla("T1", "Campus")
+    D->>B: buildColumna("T1-A")
+    loop 4 veces
+        D->>B: buildCasillero("T1-A1..A4", PEQUENO)
+    end
+    D->>B: buildColumna("T1-B")
+    loop 3 veces
+        D->>B: buildCasillero("T1-B1..B3", MEDIANO)
+    end
+    D->>B: buildColumna("T1-C")
+    loop 2 veces
+        D->>B: buildCasillero("T1-C1..C2", GRANDE)
+    end
+    Cl->>B: getResultado()
+    B-->>Cl: Taquilla T1 (árbol Composite)
+```
 
 ---
 
@@ -190,6 +276,32 @@ avisa con `notifyObservers()` cuando cambia.
 - **Quién y cuándo notifica:** el propio sujeto, al final de `depositar()` y
   `retirar()`, cuando su estado ya es coherente. Si la operación falla no se
   notifica.
+
+### Diagrama de secuencia: depositar un paquete
+
+El casillero avisa a su luz y el aviso sube por el árbol hasta la taquilla,
+que actualiza su pantalla.
+
+```mermaid
+sequenceDiagram
+    participant CR as CentroReparto
+    participant C as Casillero T1-A1
+    participant L as IndicadorLuz
+    participant Col as Columna T1-A
+    participant T as Taquilla T1
+    participant P as PantallaTaquilla
+
+    CR->>C: depositar("PKG-001")
+    C->>C: notifyObservers()
+    C->>L: update()
+    L->>C: estaLibre()
+    C-->>L: false (luz ROJA)
+    C->>Col: notifyObservers() (padre)
+    Col->>T: notifyObservers() (padre)
+    T->>P: update()
+    P->>T: getCasillerosLibres()
+    T-->>P: 8
+```
 
 ---
 
