@@ -1,0 +1,14 @@
+target/
+*.class
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Apuntes del profesor
+*.pdf
+
+# Ejemplo de formato UML
+laLiga.png

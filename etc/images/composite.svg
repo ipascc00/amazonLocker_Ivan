@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1266px" height="875px" viewBox="0 0 1266 875" style="background-color:#ffffff">
+<rect x="0" y="0" width="1266" height="875" fill="#ffffff"/>
+<polyline points="265.0,400.0 265.0,355.0 585.0,355.0 585.0,310.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="715.3,400.0 715.3,355.0 585.0,355.0 585.0,310.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="700.0,165.0 840.8,165.0 840.8,400.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="570.0,725.0 570.0,685.0 765.5,685.0 765.5,645.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="800.0,725.0 800.0,685.0 765.5,685.0 765.5,645.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="1030.0,725.0 1030.0,685.0 765.5,685.0 765.5,645.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="265.0,630.0 265.0,710.0" fill="none" stroke="#000" stroke-width="1"/>
+<polyline points="286.0,68.5 470.0,68.5" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="6 4"/>
+<polyline points="951.0,502.9 891.0,502.9" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="2 3"/>
+<rect x="470" y="20" width="230" height="290" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="585.0" y="37.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="italic" text-decoration="none" text-anchor="middle" fill="#000">ElementoLocker</text>
+<line x1="470" y1="46" x2="700" y2="46" stroke="#000" stroke-width="1"/>
+<text x="476.0" y="61.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- id: String</text>
+<text x="476.0" y="76.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- padre: ElementoLocker</text>
+<line x1="470" y1="88.0" x2="700" y2="88.0" stroke="#000" stroke-width="1"/>
+<text x="476.0" y="107.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000"># ElementoLocker(id: String)</text>
+<text x="476.0" y="122.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getId(): String</text>
+<text x="476.0" y="137.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="italic" text-decoration="none" text-anchor="start" fill="#000">+ getTotalCasilleros(): int</text>
+<text x="476.0" y="152.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="italic" text-decoration="none" text-anchor="start" fill="#000">+ getCasillerosLibres(): int</text>
+<text x="476.0" y="167.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="italic" text-decoration="none" text-anchor="start" fill="#000">+ buscarCasilleroLibre(t: Tamano): Casillero</text>
+<text x="476.0" y="182.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="italic" text-decoration="none" text-anchor="start" fill="#000">+ mostrar(sangria: String): String</text>
+<text x="476.0" y="197.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ add(e: ElementoLocker): void</text>
+<text x="476.0" y="212.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ remove(e: ElementoLocker): void</text>
+<text x="476.0" y="227.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getHijo(indice: int): ElementoLocker</text>
+<text x="476.0" y="242.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getNumeroHijos(): int</text>
+<text x="476.0" y="257.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ esCompuesto(): boolean</text>
+<text x="476.0" y="272.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getPadre(): ElementoLocker</text>
+<text x="476.0" y="287.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">~ setPadre(p: ElementoLocker): void</text>
+<text x="476.0" y="302.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getRuta(): String</text>
+<rect x="20" y="20" width="266" height="97" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="153.0" y="37.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">CentroReparto</text>
+<line x1="20" y1="46" x2="286" y2="46" stroke="#000" stroke-width="1"/>
+<line x1="20" y1="60.0" x2="286" y2="60.0" stroke="#000" stroke-width="1"/>
+<text x="26.0" y="79.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ asignarPaquete(destino: ElementoLocker,</text>
+<text x="26.0" y="94.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">      codigo: String, t: Tamano): Casillero</text>
+<text x="26.0" y="109.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ porcentajeOcupacion(e: ElementoLocker): double</text>
+<rect x="150" y="400" width="230" height="230" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="265.0" y="417.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">Casillero</text>
+<line x1="150" y1="426" x2="380" y2="426" stroke="#000" stroke-width="1"/>
+<text x="156.0" y="441.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- tamano: Tamano</text>
+<text x="156.0" y="456.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- paquete: String</text>
+<line x1="150" y1="468.0" x2="380" y2="468.0" stroke="#000" stroke-width="1"/>
+<text x="156.0" y="487.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ Casillero(id: String, t: Tamano)</text>
+<text x="156.0" y="502.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getTamano(): Tamano</text>
+<text x="156.0" y="517.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ estaLibre(): boolean</text>
+<text x="156.0" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getPaquete(): String</text>
+<text x="156.0" y="547.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ depositar(codigo: String): void</text>
+<text x="156.0" y="562.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ retirar(): String</text>
+<text x="156.0" y="577.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getTotalCasilleros(): int</text>
+<text x="156.0" y="592.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getCasillerosLibres(): int</text>
+<text x="156.0" y="607.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ buscarCasilleroLibre(t: Tamano): Casillero</text>
+<text x="156.0" y="622.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ mostrar(sangria: String): String</text>
+<rect x="640" y="400" width="251" height="245" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="765.5" y="417.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="italic" text-decoration="none" text-anchor="middle" fill="#000">GrupoLocker</text>
+<line x1="640" y1="426" x2="891" y2="426" stroke="#000" stroke-width="1"/>
+<text x="646.0" y="441.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- hijos: VectorAggregate&lt;ElementoLocker&gt;</text>
+<line x1="640" y1="453.0" x2="891" y2="453.0" stroke="#000" stroke-width="1"/>
+<text x="646.0" y="472.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000"># GrupoLocker(id: String)</text>
+<text x="646.0" y="487.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ add(e: ElementoLocker): void</text>
+<text x="646.0" y="502.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ remove(e: ElementoLocker): void</text>
+<text x="646.0" y="517.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getHijo(indice: int): ElementoLocker</text>
+<text x="646.0" y="532.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getNumeroHijos(): int</text>
+<text x="646.0" y="547.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ esCompuesto(): boolean</text>
+<text x="646.0" y="562.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getTotalCasilleros(): int</text>
+<text x="646.0" y="577.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getCasillerosLibres(): int</text>
+<text x="646.0" y="592.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ buscarCasilleroLibre(t: Tamano): Casillero</text>
+<text x="646.0" y="607.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ mostrar(sangria: String): String</text>
+<text x="646.0" y="622.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="italic" text-decoration="none" text-anchor="start" fill="#000"># admite(e: ElementoLocker): boolean</text>
+<text x="646.0" y="637.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- contieneAncestro(e: ElementoLocker): boolean</text>
+<rect x="470" y="725" width="200" height="82" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="570.0" y="742.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">Columna</text>
+<line x1="470" y1="751" x2="670" y2="751" stroke="#000" stroke-width="1"/>
+<line x1="470" y1="765.0" x2="670" y2="765.0" stroke="#000" stroke-width="1"/>
+<text x="476.0" y="784.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ Columna(id: String)</text>
+<text x="476.0" y="799.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000"># admite(e: ElementoLocker): boolean</text>
+<rect x="700" y="725" width="200" height="110" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="800.0" y="742.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">Taquilla</text>
+<line x1="700" y1="751" x2="900" y2="751" stroke="#000" stroke-width="1"/>
+<text x="706.0" y="766.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">- ubicacion: String</text>
+<line x1="700" y1="778.0" x2="900" y2="778.0" stroke="#000" stroke-width="1"/>
+<text x="706.0" y="797.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ Taquilla(id: String, ubicacion: String)</text>
+<text x="706.0" y="812.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ getUbicacion(): String</text>
+<text x="706.0" y="827.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000"># admite(e: ElementoLocker): boolean</text>
+<rect x="930" y="725" width="200" height="82" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="1030.0" y="742.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">RedLockers</text>
+<line x1="930" y1="751" x2="1130" y2="751" stroke="#000" stroke-width="1"/>
+<line x1="930" y1="765.0" x2="1130" y2="765.0" stroke="#000" stroke-width="1"/>
+<text x="936.0" y="784.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">+ RedLockers(id: String)</text>
+<text x="936.0" y="799.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000"># admite(e: ElementoLocker): boolean</text>
+<rect x="210.0" y="710" width="110" height="93" fill="#fff" stroke="#000" stroke-width="1"/>
+<text x="265.0" y="725.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">«enumeration»</text>
+<text x="265.0" y="741.0" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">Tamano</text>
+<line x1="210.0" y1="750" x2="320.0" y2="750" stroke="#000" stroke-width="1"/>
+<text x="216.0" y="765.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">PEQUENO</text>
+<text x="216.0" y="780.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">MEDIANO</text>
+<text x="216.0" y="795.0" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">GRANDE</text>
+<polygon points="951,479.9 1212.0,479.9 1226.0,493.9 1226.0,525.9 951,525.9" fill="#fff" stroke="#000" stroke-width="1"/>
+<polyline points="1212.0,479.9 1212.0,493.9 1226.0,493.9" fill="none" stroke="#000" stroke-width="1"/>
+<text x="961.0" y="498.9" font-family="Courier New, monospace" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">for all e in hijos:</text>
+<text x="961.0" y="513.9" font-family="Courier New, monospace" font-size="11" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="start" fill="#000">    total += e.getTotalCasilleros()</text>
+<polygon points="585.0,310.0 592.5,324.0 577.5,324.0" fill="#fff" stroke="#000" stroke-width="1"/>
+<polygon points="585.0,310.0 592.5,324.0 577.5,324.0" fill="#fff" stroke="#000" stroke-width="1"/>
+<polygon points="840.8,400.0 836.3,392.0 840.8,384.0 845.3,392.0" fill="#fff" stroke="#000" stroke-width="1"/>
+<rect x="712.0" y="158.0" width="20.0" height="13" fill="#fff"/>
+<text x="722.0" y="168.5" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">0..*</text>
+<rect x="829.8" y="365.0" width="22.0" height="13" fill="#fff"/>
+<text x="840.8" y="375.5" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">0..1</text>
+<rect x="828.3" y="205.1" width="25.0" height="13" fill="#fff"/>
+<text x="840.8" y="215.6" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">hijos</text>
+<polygon points="765.5,645.0 773.0,659.0 758.0,659.0" fill="#fff" stroke="#000" stroke-width="1"/>
+<polygon points="765.5,645.0 773.0,659.0 758.0,659.0" fill="#fff" stroke="#000" stroke-width="1"/>
+<polygon points="765.5,645.0 773.0,659.0 758.0,659.0" fill="#fff" stroke="#000" stroke-width="1"/>
+<polyline points="260.0,700.0 265.0,710.0 270.0,700.0" fill="none" stroke="#000" stroke-width="1"/>
+<rect x="260.0" y="679.0" width="10.0" height="13" fill="#fff"/>
+<text x="265.0" y="689.5" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">1</text>
+<rect x="245.5" y="647.0" width="39.0" height="13" fill="#fff"/>
+<text x="265.0" y="657.5" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">tamano</text>
+<polyline points="460.0,73.5 470.0,68.5 460.0,63.5" fill="none" stroke="#000" stroke-width="1"/>
+<rect x="361.5" y="61.5" width="33.0" height="13" fill="#fff"/>
+<text x="378.0" y="72.0" font-family="Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" font-style="normal" text-decoration="none" text-anchor="middle" fill="#000">«use»</text>
+
+</svg>
