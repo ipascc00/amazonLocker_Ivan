@@ -8,13 +8,12 @@ import amazonlocker.composite.CentroReparto;
 import amazonlocker.composite.ElementoLocker;
 import amazonlocker.composite.Tamano;
 import amazonlocker.composite.Taquilla;
-import amazonlocker.iterator.Iterator;
 import amazonlocker.observer.AlertaOcupacion;
 import amazonlocker.observer.IndicadorLuz;
 import amazonlocker.observer.PantallaTaquilla;
 
 /**
- * Demostración de los patrones Builder + Composite + Iterator + Observer
+ * Demostración de los patrones Builder + Composite + Observer
  * aplicados a Amazon Locker.
  */
 public class Main {
@@ -47,19 +46,6 @@ public class Main {
         System.out.println(leon.mostrar());
         System.out.printf("Ocupación: red %.1f%%, T1 %.1f%%%n%n",
                 centro.porcentajeOcupacion(leon), centro.porcentajeOcupacion(t1));
-
-        // ---- Iterator: recorrer todos los casilleros sin conocer el árbol ----
-        System.out.println("===== ITERATOR =====");
-        System.out.println("Casilleros ocupados (CasilleroIterator sobre la red):");
-        Iterator<Casillero> it = leon.createCasilleroIterator();
-        for (it.firstElement(); it.hasMoreElements(); it.nextElement()) {
-            Casillero c = it.currentElement();
-            if (!c.estaLibre()) {
-                System.out.println("  " + c.getRuta() + " -> " + c.getPaquete());
-            }
-        }
-        System.out.println("localizarPaquete(red, PKG-004) -> " + centro.localizarPaquete(leon, "PKG-004").getRuta());
-        System.out.println();
 
         // ---- Observer: los observadores se actualizan solos ----
         System.out.println("===== OBSERVER =====");
