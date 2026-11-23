@@ -41,15 +41,6 @@ class BuilderTest {
     }
 
     @Test
-    void construyeUnaTaquillaCompacta() {
-        ArbolLockerBuilder builder = new ArbolLockerBuilder();
-        new DirectorLocker(builder).construirTaquillaCompacta("T9", "Tienda");
-        assertEquals(1, builder.getResultado().getNumeroHijos());
-        assertEquals(3, builder.getResultado().getTotalCasilleros());
-        assertNull(builder.getResultado().buscarCasilleroLibre(Tamano.GRANDE));
-    }
-
-    @Test
     void construyeUnaRedCompleta() {
         ArbolLockerBuilder builder = new ArbolLockerBuilder();
         new DirectorLocker(builder).construirRed("León", "Campus", "Estación", "Centro");
@@ -127,9 +118,10 @@ class BuilderTest {
     void ambasRepresentacionesCoinciden() {
         ArbolLockerBuilder arbol = new ArbolLockerBuilder();
         PlanoLockerBuilder plano = new PlanoLockerBuilder();
-        new DirectorLocker(arbol).construirTaquillaCompacta("T1", "Tienda");
-        new DirectorLocker(plano).construirTaquillaCompacta("T1", "Tienda");
-        assertEquals(arbol.getResultado().getTotalCasilleros(), plano.getResultado().getTotalCasilleros());
+        new DirectorLocker(arbol).construirTaquillaEstandar("T1", "Tienda");
+        new DirectorLocker(plano).construirTaquillaEstandar("T1", "Tienda");
+        assertEquals(9, arbol.getResultado().getTotalCasilleros());
+        assertEquals(9, plano.getResultado().getTotalCasilleros());
     }
 
     @Test

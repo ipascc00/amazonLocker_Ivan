@@ -191,7 +191,7 @@ representación se genera. El mismo proceso crea dos productos distintos.
 
 | Rol | Clase |
 |---|---|
-| **Director** | `DirectorLocker` (modelos `MODELO_ESTANDAR` y `MODELO_COMPACTO`) |
+| **Director** | `DirectorLocker` (modelo `MODELO_ESTANDAR`) |
 | **Builder** | `LockerBuilder` (abstracta) |
 | **ConcreteBuilder** | `ArbolLockerBuilder` y `PlanoLockerBuilder` |
 | **Product** | árbol de `ElementoLocker` y `PlanoInstalacion` |

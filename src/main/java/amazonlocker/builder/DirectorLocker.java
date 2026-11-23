@@ -9,7 +9,7 @@ import static amazonlocker.composite.Tamano.PEQUENO;
 /**
  * Rol DIRECTOR del patrón Builder.
  *
- * Conoce los modelos de taquilla que instala Amazon y el orden en que se
+ * Conoce el modelo de taquilla que instala Amazon y el orden en que se
  * montan sus partes, pero no sabe qué representación se está generando:
  * solo habla con la interfaz {@link LockerBuilder}.
  */
@@ -22,11 +22,6 @@ public class DirectorLocker {
             {GRANDE, GRANDE}
     };
 
-    /** Modelo compacto para tiendas pequeñas: 1 columna (2 pequeños, 1 mediano). */
-    static final Tamano[][] MODELO_COMPACTO = {
-            {PEQUENO, PEQUENO, MEDIANO}
-    };
-
     private final LockerBuilder builder;
 
     public DirectorLocker(LockerBuilder builder) {
@@ -36,12 +31,19 @@ public class DirectorLocker {
         this.builder = builder;
     }
 
+    /**
+     * for all objects in structure { builder.buildPart() }
+     * Ids: columnas T1-A, T1-B...; casilleros T1-A1, T1-A2...
+     */
     public void construirTaquillaEstandar(String id, String ubicacion) {
-        construirTaquilla(id, ubicacion, MODELO_ESTANDAR);
-    }
-
-    public void construirTaquillaCompacta(String id, String ubicacion) {
-        construirTaquilla(id, ubicacion, MODELO_COMPACTO);
+        builder.buildTaquilla(id, ubicacion);
+        for (int col = 0; col < MODELO_ESTANDAR.length; col++) {
+            String idColumna = id + "-" + (char) ('A' + col);
+            builder.buildColumna(idColumna);
+            for (int fila = 0; fila < MODELO_ESTANDAR[col].length; fila++) {
+                builder.buildCasillero(idColumna + (fila + 1), MODELO_ESTANDAR[col][fila]);
+            }
+        }
     }
 
     /**
@@ -52,21 +54,6 @@ public class DirectorLocker {
         builder.buildRed(idRed);
         for (int i = 0; i < ubicaciones.length; i++) {
             construirTaquillaEstandar("T" + (i + 1), ubicaciones[i]);
-        }
-    }
-
-    /**
-     * for all objects in structure { builder.buildPart() }
-     * Ids: columnas T1-A, T1-B...; casilleros T1-A1, T1-A2...
-     */
-    private void construirTaquilla(String id, String ubicacion, Tamano[][] modelo) {
-        builder.buildTaquilla(id, ubicacion);
-        for (int col = 0; col < modelo.length; col++) {
-            String idColumna = id + "-" + (char) ('A' + col);
-            builder.buildColumna(idColumna);
-            for (int fila = 0; fila < modelo[col].length; fila++) {
-                builder.buildCasillero(idColumna + (fila + 1), modelo[col][fila]);
-            }
         }
     }
 }
