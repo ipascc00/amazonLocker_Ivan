@@ -21,13 +21,21 @@ public class Main {
 
     public static void main(String[] args) {
         // ---- Builder: el mismo Director genera dos representaciones ----
+        System.out.println("===== BUILDER =====");
+        System.out.println("Director: construirRed(\"Red León\", \"Campus de Vegazana\", \"Estación de tren\")");
+
+        System.out.println("\n--- 1) Con ArbolLockerBuilder -> árbol de objetos (Composite) ---");
         ArbolLockerBuilder arbolBuilder = new ArbolLockerBuilder();
         new DirectorLocker(arbolBuilder).construirRed("Red León", "Campus de Vegazana", "Estación de tren");
         ElementoLocker leon = arbolBuilder.getResultado();
+        System.out.println(leon.mostrar());
 
+        System.out.println("--- 2) Con PlanoLockerBuilder -> plano de instalación ---");
         PlanoLockerBuilder planoBuilder = new PlanoLockerBuilder();
         new DirectorLocker(planoBuilder).construirRed("Red León", "Campus de Vegazana", "Estación de tren");
         System.out.println(planoBuilder.getResultado());
+
+        System.out.println("===== COMPOSITE, ITERATOR Y OBSERVER =====");
 
         // ---- Observer: pantalla de la taquilla T1 y alerta de la red ----
         PantallaTaquilla pantallaT1 = new PantallaTaquilla((Taquilla) leon.getHijo(0));
