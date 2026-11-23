@@ -10,14 +10,11 @@ tiene su paquete de código con tests unitarios.
 | Tema | Patrón | Paquete |
 |------|--------|---------|
 | 4 | [Composite](#composite) | `amazonlocker.composite` |
-| 5 | [Iterator](#iterator)   | `amazonlocker.iterator` |
 | 7 | [Builder](#builder)     | `amazonlocker.builder` |
 | 8 | [Observer](#observer)   | `amazonlocker.observer` |
 
 ```
 DirectorLocker + LockerBuilder  ──construye──▶  árbol Composite (Red > Taquilla > Columna > Casillero)
-                                                        │
-                                  Iterator ◀──recorre───┤
                                                         │
                                   Observer ◀──avisa─────┘
 ```
@@ -93,78 +90,6 @@ sequenceDiagram
     T-->>R: A3
     R-->>C: A3
     C->>A3: depositar("PKG-001")
-```
-
----
-
-## Iterator
-
-### Problema
-
-Hay muchas tareas que recorren el árbol del locker: buscar el casillero que
-tiene un código de recogida, listar los casilleros ocupados de una zona, sumar
-los libres de cada compuesto, o recorrer una columna al revés. Si el cliente
-accede directamente a la lista de hijos queda acoplado a la estructura interna y
-tiene que escribir bucles recursivos distintos según la profundidad.
-
-Con *Iterator* cada colección crea su iterador y se recorre siempre con la
-misma interfaz (`firstElement`, `nextElement`, `hasMoreElements`,
-`currentElement`).
-
-### Diagrama de clases
-
-![Diagrama de clases del patrón Iterator](etc/images/iterator.png)
-
-### Roles
-
-| Rol | Clase |
-|---|---|
-| **Iterator** | `Iterator<T>` (interfaz) |
-| **ConcreteIterator** | `ListIterator<T>`, `ReverseIterator<T>`, `NullIterator<T>` y `CasilleroIterator` |
-| **Aggregate** | `Aggregate<T>` (interfaz) |
-| **ConcreteAggregate** | `VectorAggregate<T>` (adapta `java.util.Vector`) |
-| **Client** | `CentroReparto` y `GrupoLocker` |
-
-### Decisiones
-
-- **Iteradores externos:** el cliente controla el avance con `nextElement()`.
-- **Varios recorridos sobre el mismo agregado:** `createIterator()` devuelve un
-  `ListIterator` y `createIterator("reverse")` un `ReverseIterator`.
-- **NullIterator:** lo devuelve `Casillero` (no tiene hijos), así se puede
-  pedir un iterador a cualquier `ElementoLocker` sin preguntar si es hoja.
-- **Iterador sobre el Composite:** `CasilleroIterator` recorre en profundidad
-  todos los casilleros de un subárbol con una pila de iteradores (uno por
-  nivel). Lo usa `CentroReparto.localizarPaquete()`.
-
-### Diagrama de secuencia: localizar un paquete
-
-El cliente teclea su código y se recorren todos los casilleros de la red con el
-`CasilleroIterator`, sin conocer la forma del árbol.
-
-```mermaid
-sequenceDiagram
-    participant C as CentroReparto
-    participant R as RedLockers
-    participant CI as CasilleroIterator
-    participant IR as ListIterator (hijos de la red)
-    participant T as Taquilla T1
-    participant IT as ListIterator (hijos de T1)
-
-    C->>R: createCasilleroIterator()
-    R->>CI: new CasilleroIterator(this)
-    CI->>R: createIterator()
-    R-->>CI: IR
-    CI->>IR: currentElement()
-    IR-->>CI: T1 (compuesto)
-    CI->>T: createIterator()
-    T-->>CI: IT (se apila)
-    Note over CI: baja hasta la primera columna<br/>y se queda en su primer casillero
-    loop mientras hasMoreElements()
-        C->>CI: currentElement()
-        CI-->>C: casillero
-        C->>C: ¿getPaquete() == código?
-        C->>CI: nextElement()
-    end
 ```
 
 ---
@@ -311,8 +236,7 @@ sequenceDiagram
 pom.xml
 etc/                       diagramas UML (.drawio) y sus imágenes (etc/images)
 src/main/java/amazonlocker/
-├── composite/             Composite (+ CasilleroIterator y CentroReparto)
-├── iterator/              Iterator, Aggregate, VectorAggregate, ListIterator...
+├── composite/             Composite (+ CentroReparto)
 ├── builder/               LockerBuilder, Director, ConcreteBuilders, PlanoInstalacion
 ├── observer/              Subject, Observer y observadores concretos
 └── Main.java              demo de todos los patrones juntos
