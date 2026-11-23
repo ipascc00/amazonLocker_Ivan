@@ -28,6 +28,11 @@ public class IndicadorLuz implements Observer {
     @Override
     public void update() {
         color = subject.estaLibre() ? Color.VERDE : Color.ROJO;
+        draw();
+    }
+
+    private void draw() {
+        System.out.println("   [Luz " + subject.getId() + "] " + color);
     }
 
     public Color getColor() {

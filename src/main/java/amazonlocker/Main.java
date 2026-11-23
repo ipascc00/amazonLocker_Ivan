@@ -35,23 +35,22 @@ public class Main {
         new DirectorLocker(planoBuilder).construirRed("Red León", "Campus de Vegazana", "Estación de tren");
         System.out.println(planoBuilder.getResultado());
 
-        System.out.println("===== COMPOSITE, ITERATOR Y OBSERVER =====");
-
-        // ---- Observer: pantalla de la taquilla T1 y alerta de la red ----
-        PantallaTaquilla pantallaT1 = new PantallaTaquilla((Taquilla) leon.getHijo(0));
-        AlertaOcupacion alerta = new AlertaOcupacion(leon, 20);
-        System.out.println("Pantalla: " + pantallaT1.mostrar());
-
         // ---- Composite: el cliente trata todo el árbol de forma uniforme ----
+        System.out.println("===== COMPOSITE =====");
         CentroReparto centro = new CentroReparto();
-        centro.asignarPaquete(leon, "PKG-001", Tamano.GRANDE);
-        centro.asignarPaquete(leon, "PKG-002", Tamano.PEQUENO);
-        centro.asignarPaquete(leon, "PKG-003", Tamano.GRANDE);
-        centro.asignarPaquete(leon, "PKG-004", Tamano.GRANDE);
+        Taquilla t1 = (Taquilla) leon.getHijo(0);
+        System.out.println("asignarPaquete(red, PKG-001, GRANDE)     -> " + centro.asignarPaquete(leon, "PKG-001", Tamano.GRANDE).getRuta());
+        System.out.println("asignarPaquete(red, PKG-002, PEQUENO)    -> " + centro.asignarPaquete(leon, "PKG-002", Tamano.PEQUENO).getRuta());
+        System.out.println("asignarPaquete(T1, PKG-003, GRANDE)      -> " + centro.asignarPaquete(t1, "PKG-003", Tamano.GRANDE).getRuta());
+        System.out.println("asignarPaquete(red, PKG-004, GRANDE)     -> " + centro.asignarPaquete(leon, "PKG-004", Tamano.GRANDE).getRuta());
+        System.out.println();
         System.out.println(leon.mostrar());
+        System.out.printf("Ocupación: red %.1f%%, T1 %.1f%%%n%n",
+                centro.porcentajeOcupacion(leon), centro.porcentajeOcupacion(t1));
 
         // ---- Iterator: recorrer todos los casilleros sin conocer el árbol ----
-        System.out.println("Casilleros ocupados:");
+        System.out.println("===== ITERATOR =====");
+        System.out.println("Casilleros ocupados (CasilleroIterator sobre la red):");
         Iterator<Casillero> it = leon.createCasilleroIterator();
         for (it.firstElement(); it.hasMoreElements(); it.nextElement()) {
             Casillero c = it.currentElement();
@@ -59,18 +58,32 @@ public class Main {
                 System.out.println("  " + c.getRuta() + " -> " + c.getPaquete());
             }
         }
+        System.out.println("localizarPaquete(red, PKG-004) -> " + centro.localizarPaquete(leon, "PKG-004").getRuta());
+        System.out.println();
 
-        Casillero c = centro.localizarPaquete(leon, "PKG-004");
-        System.out.println("\nPKG-004 está en: " + c.getRuta());
-        System.out.printf("Ocupación de la red: %.1f%%%n", centro.porcentajeOcupacion(leon));
+        // ---- Observer: los observadores se actualizan solos ----
+        System.out.println("===== OBSERVER =====");
+        Casillero b1 = (Casillero) t1.getHijo(1).getHijo(0);   // T1-B1, libre
+        System.out.println("1) Se suscriben los observadores (attach en su constructor):");
+        IndicadorLuz luz = new IndicadorLuz(b1);
+        PantallaTaquilla pantalla = new PantallaTaquilla(t1);
+        AlertaOcupacion alerta = new AlertaOcupacion(leon, 30);
+        System.out.println("   [Pantalla] " + pantalla.mostrar());
+        System.out.printf("   [Logística] vigilando %s, alerta al 30%% (ahora %.0f%%)%n",
+                leon.getId(), centro.porcentajeOcupacion(leon));
 
-        IndicadorLuz luz = new IndicadorLuz(c);
-        System.out.println("Luz de " + c.getId() + ": " + luz.getColor());
-        c.retirar();   // el cliente recoge PKG-004
-        System.out.println("Luz de " + c.getId() + " tras recogerlo: " + luz.getColor());
+        System.out.println("\n2) El repartidor deposita PKG-005 en T1-B1:  b1.depositar(\"PKG-005\")");
+        b1.depositar("PKG-005");
 
-        System.out.println("\nPantalla: " + pantallaT1.mostrar());
-        System.out.println("Avisos de logística:");
-        alerta.getAvisos().forEach(m -> System.out.println("  " + m));
+        System.out.println("\n3) El centro asigna PKG-006 a la red:  asignarPaquete(red, PKG-006, MEDIANO)");
+        centro.asignarPaquete(leon, "PKG-006", Tamano.MEDIANO);
+
+        System.out.println("\n4) El cliente recoge su paquete:  b1.retirar()");
+        b1.retirar();
+
+        System.out.println("\n5) Se desconecta la luz (detach) y se vuelve a depositar en T1-B1:");
+        luz.desconectar();
+        b1.depositar("PKG-007");
+        System.out.println("   (la luz ya no se entera; la pantalla sí, porque observa la taquilla)");
     }
 }

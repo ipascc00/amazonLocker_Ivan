@@ -29,6 +29,7 @@ public class PantallaTaquilla implements Observer {
     public void update() {
         refrescar();
         refrescos++;
+        System.out.println("   [Pantalla] " + mostrar());
     }
 
     private void refrescar() {

@@ -41,7 +41,10 @@ public class AlertaOcupacion implements Observer {
         } else if (activa && ocupacion < umbral) {
             activa = false;
             avisos.add(String.format("Fin de alerta: %s al %.0f%%", subject.getId(), ocupacion));
+        } else {
+            return;
         }
+        System.out.println("   [Logística] " + avisos.get(avisos.size() - 1));
     }
 
     private double getOcupacion() {
